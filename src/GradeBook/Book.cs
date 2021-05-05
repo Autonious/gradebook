@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace GradeBook
 
 {
-    class Book
+    public class Book
     {
         public Book(string name) // explicit constructor
         {
@@ -15,35 +15,22 @@ namespace GradeBook
             grades.Add(grade);
         }
 
-        public void ShowStats()
+        public Stats GetStats()
         {
-            var avgGrade = 0.0;
-            var totalGrade = 0.0;
-            var highestGrade = double.MinValue;
-            var lowestGrade = double.MaxValue;
-            if (grades.Count > 0)
+            var result = new Stats();
+            result.Average = 0.0;
+            result.High = double.MinValue;
+            result.Low = double.MaxValue;
+           
+            foreach (var grade in grades)
             {
-                foreach (var number in grades)
-                {
-                    highestGrade = Math.Max(number, highestGrade);
-                    lowestGrade = Math.Min(number, lowestGrade);
-                    totalGrade += number;
-                }
-                avgGrade = (totalGrade /= grades.Count);
-                Console.WriteLine($"The lowest grade is {lowestGrade}.");
-                Console.WriteLine($"The highest grade is {highestGrade}.");
-                Console.WriteLine($"The average grade is {avgGrade:N3}.");
+                result.Low = Math.Min(grade, result.Low);
+                result.High = Math.Max(grade, result.High);
+                result.Average += grade;
             }
-            else
-            {
-                Console.WriteLine($"{name} is empty. Please add grades to the system.");
-            }
+            result.Average /= grades.Count;
 
-        }
-
-        internal void DeleteAllGrades()
-        {
-            grades = new List<double> { };
+            return result;
         }
 
         private List<double> grades; // Because this is outside of the void, it is known as a Field for the class, in this case a field for the "Book" class. The Book Class saves this Field in memory.
