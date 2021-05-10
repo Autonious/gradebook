@@ -8,7 +8,7 @@ namespace GradeBook
         public Book(string name) // explicit constructor
         {
             grades = new List<double>();
-            this.name = name;
+            Name = name;
         }
         public void AddGrade(double grade)
         {
@@ -34,7 +34,7 @@ namespace GradeBook
         }
 
         private List<double> grades; // Because this is outside of the void, it is known as a Field for the class, in this case a field for the "Book" class. The Book Class saves this Field in memory.
-        private string name;
+        public string Name;
     }
 
 
