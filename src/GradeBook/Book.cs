@@ -5,12 +5,14 @@ namespace GradeBook
 {
     public class Book
     {
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+        
         public Book(string name) // explicit constructor
         {
             grades = new List<double>();
             Name = name;
         }
-        public void AddLetterGrade(char letter)
+        public void AddGrade(char letter)
         {
             switch(letter)
             {
@@ -37,6 +39,10 @@ namespace GradeBook
             if(grade <= 100 && grade >=0)
             {
                 grades.Add(grade);
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -44,6 +50,8 @@ namespace GradeBook
             }
             
         }
+
+        public event GradeAddedDelegate GradeAdded;
 
         public Stats GetStats()
         {
@@ -87,7 +95,15 @@ namespace GradeBook
         }
 
         private List<double> grades; // Because this is outside of the void, it is known as a Field for the class, in this case a field for the "Book" class. The Book Class saves this Field in memory.
-        public string Name;
+        
+        
+        public string Name
+        {
+            get; 
+            set;
+        }
+
+        public const string CATEGORY = "Science";
     }
 
 
