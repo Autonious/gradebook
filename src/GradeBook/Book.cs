@@ -3,9 +3,9 @@ using System.Collections.Generic;
 namespace GradeBook
 
 {
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
     public class Book
     {
-        public delegate void GradeAddedDelegate(object sender, EventArgs args);
         
         public Book(string name) // explicit constructor
         {
