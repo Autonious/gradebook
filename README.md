@@ -1,2 +1,2 @@
 # gradebook
-A Gradebook application built in C# on .NET Core
+A Gradebook application built using C# on .NET
