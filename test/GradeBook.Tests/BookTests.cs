@@ -1,6 +1,8 @@
 using System;
 using Xunit;
 
+// TODO: Tests need to be rerun and possibly refactored because of the GetStats refactor
+
 namespace GradeBook.Tests
 {
     public class BookTests
