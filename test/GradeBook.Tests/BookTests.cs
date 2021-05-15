@@ -1,6 +1,8 @@
 using System;
 using Xunit;
 
+// TODO: Tests need to be rerun and possibly refactored because of the GetStats refactor
+
 namespace GradeBook.Tests
 {
     public class BookTests
@@ -9,7 +11,7 @@ namespace GradeBook.Tests
         public void BookCalculatesAnAvgGrade()
         {
             // arrange
-            var book = new Book("");
+            var book = new InMemoryBook("InMemoryBook1");
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.3);
