@@ -9,7 +9,9 @@ namespace GradeBook
         static void Main(string[] args) // Method named "Main"
         {
             IBook book = new DiskBook("Datwon's Grade Book");
+            
             book.GradeAdded += OnGradeAdded;
+            
             EnterGrades(book);
 
             var stats = book.GetStats();
